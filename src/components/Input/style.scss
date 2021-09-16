@@ -1,0 +1,26 @@
+.form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 13px;
+
+  & span {
+    color: #f01f30;
+    margin-left: 10px;
+    font-size: 13px;
+    height: 10px;
+  }
+}
+
+input {
+  height: 45px;
+  width: 100%;
+  font-size: 14px;
+  line-height: 16px;
+  border: 2px solid #e9f2ff;
+  border-radius: 5px;
+  padding-left: 25px;
+  &.invalid {
+    border: 2px solid #f01f30;
+  }
+}

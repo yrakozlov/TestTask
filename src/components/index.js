@@ -1,0 +1,7 @@
+export {default as Header} from './Header'
+export {default as Authorization} from './Authorization'
+export {default as Authorization2} from './Authorization2'
+export {default as Registration} from './Registration'
+export {default as Input} from './Input'
+export {default as Profile} from './Profile'
+export {default as Home} from './Home'

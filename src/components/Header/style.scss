@@ -1,0 +1,31 @@
+.header {
+  background-color: #e8ebf1;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+  }
+
+  &__logo > a {
+    font-size: 25px;
+    color: #2aacc8;
+    span {
+      font-weight: 700;
+      color: black;
+    }
+  }
+
+  &__menu {
+    li {
+      margin-left: 20px;
+      cursor: pointer;
+      font-size: 19px;
+      transition: 0.3s;
+      &:hover {
+        color: #2aacc8;
+      }
+    }
+  }
+}
