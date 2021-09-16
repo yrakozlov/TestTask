@@ -7,11 +7,8 @@ import {
   Home,
 } from "./components";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 function App() {
-  const isAuth = useSelector((state) => state.user.isAuth);
-
   return (
     <div className="App">
       <Header />

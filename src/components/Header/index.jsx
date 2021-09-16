@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { logOut } from "../../reducers/userReducer";
 import "./style.scss";
@@ -7,7 +7,7 @@ import "./style.scss";
 const Header = () => {
   console.log(!localStorage.token);
   const dispatch = useDispatch();
-  const isAuth = useSelector((state) => state.user.isAuth);
+
   return (
     <header className="header">
       <div className="container">
