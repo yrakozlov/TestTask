@@ -1,7 +1,7 @@
 import "./App.css";
 import {
   Header,
-  Authorization2,
+  Authorization,
   Registration,
   Profile,
   Home,
@@ -9,6 +9,7 @@ import {
 import { Route, Switch, Redirect } from "react-router-dom";
 
 function App() {
+
   return (
     <div className="App">
       <Header />
@@ -17,7 +18,7 @@ function App() {
         <Route
           path="/authorization"
           render={() =>
-            localStorage.token ? <Redirect to={"/"} /> : <Authorization2 />
+            localStorage.token ? <Redirect to={"/"} /> : <Authorization />
           }
         />
         <Route
@@ -31,6 +32,7 @@ function App() {
           }
         />
         <Route
+          exact
           path="/"
           render={() =>
             !localStorage.token ? <Redirect to={"/authorization"} /> : <Home />

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { auth } from "../actions/user";
 import "./style.scss";
 
-const Authorization2 = () => {
+const Authorization = () => {
   const [email, setEmail] = useState("");
   const [password, SetPasword] = useState("");
   const [emailDirty, setEmailDirty] = useState(false);
@@ -104,4 +104,4 @@ const Authorization2 = () => {
   );
 };
 
-export default Authorization2;
+export default Authorization;

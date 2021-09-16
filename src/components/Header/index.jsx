@@ -1,13 +1,9 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { logOut } from "../../reducers/userReducer";
+import { logOut } from "../../components/actions/user";
 import "./style.scss";
 
 const Header = () => {
-  console.log(!localStorage.token);
-  const dispatch = useDispatch();
-
   return (
     <header className="header">
       <div className="container">
@@ -33,7 +29,7 @@ const Header = () => {
                 {!localStorage.token ? (
                   <NavLink to="/registration">Регистрация</NavLink>
                 ) : (
-                  <div onClick={() => dispatch(logOut())}>Log out</div>
+                  <div onClick={() => logOut()}>Log out</div>
                 )}
               </li>
             </ul>

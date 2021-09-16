@@ -17,15 +17,16 @@ export function userReducer(state = defaultState, action) {
             }
         case LOG_OUT:
             localStorage.removeItem('token')
+            document.location.reload()
             return {
                 ...state,
-                urentUser: {},
+                curentUser: {},
                 isAuth: false
             }
             case REG_USER:
                 return {
                     ...state,
-                    urentUser: action.payload.user,
+                    curentUser: action.payload.user,
                     isAuth: true
                 }
         default:

@@ -1,5 +1,4 @@
 import { React, useState } from "react";
-import { useDispatch } from "react-redux";
 import { reg } from "../../components/actions/user";
 import "./style.scss";
 
@@ -18,8 +17,6 @@ const Registration = () => {
   const [repeatPasswordError, setRepeatPasswordError] = useState(
     "Поле не может быть пустым"
   );
-
-  const dispatch = useDispatch();
 
   const nameHanler = (e) => {
     setName(e.target.value);
@@ -141,7 +138,7 @@ const Registration = () => {
           <button
             className="button"
             onClick={(event) => {
-              dispatch(reg(event, email, password));
+              reg(event, email, password);
             }}
           >
             Зарегистрироваться
