@@ -9,12 +9,16 @@ import {
 import { Route, Switch, Redirect } from "react-router-dom";
 
 function App() {
-
   return (
     <div className="App">
       <Header />
       <Switch>
-        <Route path="/registration" component={Registration} />
+        <Route
+          path="/registration"
+          render={() =>
+            localStorage.token ? <Redirect to={"/"} /> : <Registration />
+          }
+        />
         <Route
           path="/authorization"
           render={() =>
