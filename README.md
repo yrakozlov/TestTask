@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Тестовое задание
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Задание
 
-## Available Scripts
+**Реализовать приложение, которое умеет показывать следующие страницы:**
 
-In the project directory, you can run:
+- / - главная
 
-### `npm start`
+- /login - страница ввода логина и пароля
+- /news - страница с новостями (любая однотипная информация)
+- /profile - страница с произвольным текстом, недоступная без авторизации
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**На сайте, в шапке или подвале реализовать ссылки:**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- На главную (/)
 
-### `npm test`
+- Новости (/news)
+- Профиль (/profile)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Если пользователь кликает на страницу “профиля” и он не “авторизован” - перекидывать на страницу /login
 
-### `npm run build`
+**Форма входа (/login) принимает “фейковые” данные:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- username: Admin
+- password: 12345
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Если введены другие данные, то показывается сообщения: \
+_Имя пользователя или пароль введены неверно_
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Если введены корректные данные, то перебрасывать на страницу /profile
 
-### `npm run eject`
+Информацию об авторизации пользователя можно хранить в localStorage. Базу данных реализовать не нужно.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Все необходимое на ваш взгляд, прокинуть через Redux.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Реализация
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Все страницы я поместил в отдельную папку pages, где добавил специальный файл index.js для экспорта компонентов:**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- / - главная (с новостями) - Для блока с новостью я сделал отдельный макет, который поместил в папку _src/components_( где тоже добавил специальный файл index.js для экспорта).
+  В дальнейшем папку components можно было бы использовать , как хранилище различных макетов (например отдельный компонент для инпута, чтобы не пришлось заново на каждой странице
+  реализовывать один и тот же инпут).
 
-## Learn More
+  Не авторизированный пользователь не может зайти на главняю страницу.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* /profile - Профиль ( с информацией о пользователе ). Простой html и scss. На странице нет никакой логики.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  Не авторизированный пользователь не может зайти на страницу профиля.
 
-### Code Splitting
+* /authorization - страница входа. Два инпута и кнопка . Валидацию решил реализовать без каких либо библиотек, чтобы лучше понимать как именно она работает.
+  [Регулярное выражение для валидации почты взял отсюда](https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript) .
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  Функцию логина поместил в файл user.js, в папку src/action.
+  Чтобы получить токен зарегистрированого пользователя, я использовал API firebase. После получения, токен помещал в local storage.
 
-### Analyzing the Bundle Size
+  В файле App.js сделал проверку - если токен есть в
+  local storage, то редиректим пользователя на страницу профиля, а если нет, то на страницу авторизации.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* /registration - страница регистрации. Функцию регистрации я поместил в файл user.js, в папку src/action. Запрос и проверку реализовал по аналогии с авторизацией.
 
-### Making a Progressive Web App
+В шапке добавил навигацию с проверкой наличия токена в local storage. Если токен есть - отображаются ссылки на главную страницу и на страницу профиля, а если нет , то на страницу входа и регистрации.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Сделать авторизацию и регистрацию с помощью редакса не удалось , поскольку после перезагрузки страницы сбрасывалось состояние.
+И переменная, которая отвечала за авторизацию пользователя, снова принимала состояние false (не авторизован), из-за чего проверка авторизирован пользователь или нет срабатывала не так , как задумывалось.

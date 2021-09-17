@@ -1,11 +1,6 @@
 import "./App.css";
-import {
-  Header,
-  Authorization,
-  Registration,
-  Profile,
-  Home,
-} from "./components";
+import { Header } from "./components";
+import { Home, Registration, Authorization, Profile } from "./pages";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 function App() {

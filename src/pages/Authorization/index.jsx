@@ -1,6 +1,5 @@
 import { React, useState } from "react";
-import { useDispatch } from "react-redux";
-import { auth } from "../actions/user";
+import { auth } from "../../actions/user";
 import "./style.scss";
 
 const Authorization = () => {
@@ -12,7 +11,6 @@ const Authorization = () => {
   const [passwordError, setPasswordError] = useState(
     "Пароль не может быть пустым "
   );
-  const dispatch = useDispatch();
 
   const emailHandler = (e) => {
     setEmail(e.target.value);
@@ -92,7 +90,7 @@ const Authorization = () => {
             <button
               className="button"
               onClick={(event) => {
-                dispatch(auth(event, email, password));
+                auth(event, email, password);
               }}
             >
               Войти

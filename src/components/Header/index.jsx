@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { logOut } from "../../components/actions/user";
+import { logOut } from "../../actions/user";
 import "./style.scss";
 
 const Header = () => {

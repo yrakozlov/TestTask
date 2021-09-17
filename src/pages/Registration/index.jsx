@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { reg } from "../../components/actions/user";
+import { reg } from "../../actions/user";
 import "./style.scss";
 
 const Registration = () => {
