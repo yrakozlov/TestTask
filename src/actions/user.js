@@ -14,7 +14,7 @@ export const auth = async (event, email, password) => {
         localStorage.setItem('token', response.data.idToken)
         document.location.reload()
       }catch(e){
-        console.log(e)
+        alert("Имя пользователя или пароль введены неверно")
       }
       
 
@@ -34,7 +34,7 @@ export const reg = async (event, email, password) => {
       localStorage.setItem('token', response.data.idToken)
       document.location.reload()
     }catch(e){
-      console.log(e)
+      alert("Что-то пошло не так")
     }
     
   
