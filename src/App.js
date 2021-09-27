@@ -11,20 +11,20 @@ function App() {
         <Route
           path="/registration"
           render={() =>
-            localStorage.token ? <Redirect to={"/"} /> : <Registration />
+            localStorage.token ? <Redirect to="/" /> : <Registration />
           }
         />
         <Route
           path="/authorization"
           render={() =>
-            localStorage.token ? <Redirect to={"/"} /> : <Authorization />
+            localStorage.token ? <Redirect to="/" /> : <Authorization />
           }
         />
         <Route
           path="/Profile"
           render={() =>
             !localStorage.token ? (
-              <Redirect to={"/authorization"} />
+              <Redirect to="/authorization" />
             ) : (
               <Profile />
             )
@@ -34,9 +34,10 @@ function App() {
           exact
           path="/"
           render={() =>
-            !localStorage.token ? <Redirect to={"/authorization"} /> : <Home />
+            !localStorage.token ? <Redirect to="/authorization" /> : <Home />
           }
         />
+        <Redirect to='/' />
       </Switch>
     </div>
   );

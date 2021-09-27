@@ -53,4 +53,17 @@ input {
   &:hover {
     background-color: #259ab4;
   }
+
+  &--disabled {
+    height: 35px;
+    width: 100%;
+    background: #2aacc8;
+    border-radius: 5px;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    transition: 0.3s;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
 }

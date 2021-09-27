@@ -1,16 +1,12 @@
 import axios from 'axios'
 
-export const auth = async (event, email, password) => {
-    event.preventDefault();
+export const auth = async (values) => {
+
     
-      const authData = {
-        email,
-        password,
-        returnSecureToken: true,
-      };
+     
 
       try{
-        const response = await axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDOu2Bso21LW7Vu2QOzWCtPbTJcMq1kxts", authData);
+        const response = await axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDOu2Bso21LW7Vu2QOzWCtPbTJcMq1kxts", values);
         localStorage.setItem('token', response.data.idToken)
         document.location.reload()
       }catch(e){
@@ -20,8 +16,7 @@ export const auth = async (event, email, password) => {
 
 }
 
-export const reg = async (event, email, password) => {
-  event.preventDefault();
+export const reg = async (email, password) => {
   
     const authData = {
       email,
