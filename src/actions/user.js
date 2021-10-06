@@ -16,16 +16,12 @@ export const auth = async (values) => {
 
 }
 
-export const reg = async (email, password) => {
+export const reg = async (values) => {
   
-    const authData = {
-      email,
-      password,
-      returnSecureToken: true,
-    };
+   
 
     try{
-      const response = await axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDOu2Bso21LW7Vu2QOzWCtPbTJcMq1kxts", authData);
+      const response = await axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDOu2Bso21LW7Vu2QOzWCtPbTJcMq1kxts", values);
       localStorage.setItem('token', response.data.idToken)
       document.location.reload()
     }catch(e){

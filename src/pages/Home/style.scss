@@ -1,7 +1,4 @@
-.news_wrapper {
-  display: flex;
-  /* flex-direction: row; */
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
+.task__list {
+  display: block;
+  margin-bottom: 20px;
 }

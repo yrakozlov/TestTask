@@ -1,0 +1,46 @@
+.news_container {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  max-height: 40px;
+  height: 100%;
+  background: #fff;
+  box-shadow: 0px 6px 50px rgba(217, 229, 255, 0.7);
+  border-radius: 10px;
+}
+
+.circle {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 30px;
+  &--red {
+    background-color: #ff6464;
+  }
+  &--grey {
+    background-color: #c9d1d3;
+  }
+  &--green {
+    background-color: #42b883;
+  }
+  &--blue {
+    background-color: #64c4ed;
+  }
+  &--pink {
+    background-color: #ffbbcc;
+  }
+  &--lime {
+    background-color: #b6e6bd;
+  }
+  &--purple {
+    background-color: #c355f5;
+  }
+  &--black {
+    background-color: #110133;
+  }
+}
+
+.title {
+  margin-left: 15px;
+}

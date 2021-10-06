@@ -12,7 +12,7 @@ export const initialValues = {
 
 export const validateSchemaAuth = Yup.object().shape({
     email: Yup.string().email("Введите корректный email").required("Поле обязательно к заполнению"),
-    password: Yup.string().typeError("Введите коректный пароль").required("Поле обязательно к заполнению").matches(/[a-z]/, "Хотябы одну букву латинского алфавита").min(6, 'Не менее 6 символов')
+    password: Yup.string().typeError("Введите коректный пароль").required("Поле обязательно к заполнению")
 })
 
 export const validateSchemaReg = Yup.object().shape({
