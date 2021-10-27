@@ -32,7 +32,11 @@ const Authorization = () => {
                 <input
                   id="email"
                   name={"email"}
-                  className={errors.email && touched.email ? "invalid" : ""}
+                  className={
+                    errors.email && touched.email
+                      ? "form-field__input-invalid"
+                      : "form-field__input"
+                  }
                   value={values.email}
                   type="email"
                   placeholder="Введите Email"
@@ -46,7 +50,9 @@ const Authorization = () => {
                   id="password"
                   name={"password"}
                   className={
-                    errors.password && touched.password ? "invalid" : ""
+                    errors.password && touched.password
+                      ? "form-field__input-invalid"
+                      : "form-field__input"
                   }
                   value={values.password}
                   type="password"

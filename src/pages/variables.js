@@ -7,7 +7,7 @@ export const initialValues = {
     password: '', 
     name: '',
     rapeatPassword: '',
-
+    nameTask: ''
 }
 
 export const validateSchemaAuth = Yup.object().shape({
@@ -23,4 +23,8 @@ export const validateSchemaReg = Yup.object().shape({
     .test('passwords-match', 'Passwords must match', function(value){
       return this.parent.password === value
     })
+})
+
+export const validateSchemaAddTask = Yup.object().shape({
+    nameTask: Yup.string().required("Поле обязательно к заполнению")
 })

@@ -1,24 +1,36 @@
-import { React, useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
 import { Task, AddTask } from "../../components";
 import "./style.scss";
 
 const Home = () => {
-  // const [tasks, setTasks] = useState(null)
+  const [todos, setTodos] = useState([]);
+  const [page, setPage] = useState(1);
+  const limit = 20;
 
-  // useEffect(() => {
-  //   axios.get('https://testtask-5d26c-default-rtdb.firebaseio.com/tasks.json').then(({data}) => {
-  //     setTasks(data.tasks)
+  const parentRef = useRef();
+  const childRef = useRef();
 
-  //    })
+  const fetchTodos = (page, limit) => {
+    fetch(
+      `https://jsonplaceholder.typicode.com/todos?_limit=${limit}&_page=${page}`
+    )
+      .then((response) => response.json())
+      .then((json) => setTodos(json));
+  };
 
-  //  }, [])
+  useEffect(() => {
+    fetchTodos(page, limit);
+  }, []);
 
   return (
     <div className="container">
-      <div className="task__list">
+      <div ref={parentRef} className="task__list">
         <AddTask />
-        <Task color="red" />
+
+        {todos.map((todo) => (
+          <Task key={todo.id} color="red" title={todo.title} />
+        ))}
+        <div ref={childRef} className="childRef"></div>
       </div>
     </div>
   );

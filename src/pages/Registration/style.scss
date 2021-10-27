@@ -13,16 +13,6 @@
   margin-bottom: 19px;
 }
 
-input {
-  height: 45px;
-  width: 100%;
-  font-size: 14px;
-  line-height: 16px;
-  border: 2px solid #e9f2ff;
-  border-radius: 5px;
-  padding-left: 25px;
-}
-
 .register-form {
   max-width: 415px;
   width: 100%;
@@ -37,6 +27,24 @@ input {
 
 .form-field {
   margin-bottom: 13px;
+  &__input {
+    height: 45px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 16px;
+    border: 2px solid #e9f2ff;
+    border-radius: 5px;
+    padding-left: 25px;
+    &-invalid {
+      height: 45px;
+      width: 100%;
+      font-size: 14px;
+      line-height: 16px;
+      border: 2px solid #f01f30;
+      border-radius: 5px;
+      padding-left: 25px;
+    }
+  }
 }
 
 .button {

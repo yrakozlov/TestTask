@@ -35,3 +35,5 @@ export const logOut = () => {
   localStorage.removeItem('token')
   document.location.reload()
 }
+
+
