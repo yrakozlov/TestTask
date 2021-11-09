@@ -4,7 +4,7 @@ import { initialValues, validateSchemaAddTask } from "../../pages/variables";
 import { useClickOutside } from "../../hooks/useClickOutside";
 import "./style.scss";
 
-const AddTask = () => {
+const AddTask = ({onAdd}) => {
   const [visiblePopup, setVisiblePopup] = useState(false);
   const onClose = () => {
     setVisiblePopup(!visiblePopup);
@@ -13,6 +13,9 @@ const AddTask = () => {
   const domNode = useClickOutside(() => {
     setVisiblePopup(false);
   });
+
+
+
 
   return (
     <div ref={domNode} className="addTask">
@@ -25,7 +28,7 @@ const AddTask = () => {
           validateOnBlur
           validationSchema={validateSchemaAddTask}
           onSubmit={(values) => {
-            console.log(values);
+            onAdd({todoId: 1, title: values.nameTask});
             setVisiblePopup(!visiblePopup);
           }}
         >

@@ -1,14 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Task, AddTask } from "../../components";
+import React, { useEffect, useState } from "react";
+import { AddTask, Circle } from "../../components";
+import { ButtonMUI, Pagination } from "../../shared";
 import "./style.scss";
 
 const Home = () => {
   const [todos, setTodos] = useState([]);
   const [page, setPage] = useState(1);
-  const limit = 20;
+  const limit = 10;
 
-  const parentRef = useRef();
-  const childRef = useRef();
+  const handleChange = (event) => {
+    setPage(event.selected + 1);
+  };
 
   const fetchTodos = (page, limit) => {
     fetch(
@@ -20,18 +22,55 @@ const Home = () => {
 
   useEffect(() => {
     fetchTodos(page, limit);
-  }, []);
+  }, [page]);
+
+  const onAddTodos = (values) => {
+    const newTodos = [values, ...todos];
+    setTodos(newTodos);
+  };
+
+  const onDeleteTask = (id) => {
+    setTodos(todos.filter((todos) => todos.id !== id));
+  };
 
   return (
     <div className="container">
-      <div ref={parentRef} className="task__list">
-        <AddTask />
-
-        {todos.map((todo) => (
-          <Task key={todo.id} color="red" title={todo.title} />
-        ))}
-        <div ref={childRef} className="childRef"></div>
-      </div>
+      <AddTask onAdd={onAddTodos} />
+      <section className="task__list">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {todos.map((todo) => (
+              <tr key={todo.id}>
+                <td>
+                  <Circle color="red" />
+                </td>
+                <td>{todo.title}</td>
+                <td>
+                  <span className="table-inner table-inner--right">
+                    <ButtonMUI size="small" color="primary">
+                      DONE
+                    </ButtonMUI>
+                    <ButtonMUI
+                      size="small"
+                      color="secondary"
+                      onClick={() => onDeleteTask(todo.id)}
+                    >
+                      DELETE
+                    </ButtonMUI>
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <Pagination pageCount={20} onChange={handleChange} />
+      </section>
     </div>
   );
 };
