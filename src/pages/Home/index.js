@@ -60,7 +60,7 @@ const Home = () => {
                 <td>
                   <span className="table-inner table-inner--right">
                     <ButtonMUI size="small" color="primary">
-                      DONE
+                      Edit
                     </ButtonMUI>
                     <ButtonMUI
                       size="small"

@@ -1,3 +1,5 @@
+@import "./../../assets/styles/vars";
+
 .button-mui {
   padding: 6px 16px;
   min-width: 148px;
@@ -28,7 +30,7 @@
     }
 
     &-primary {
-      background-color: #2cc197;
+      background-color: var(--warning);
 
       &:hover {
         background-color: darken(#2cc197, 10%);
