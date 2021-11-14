@@ -28,7 +28,7 @@ const AddTask = ({onAdd}) => {
           validateOnBlur
           validationSchema={validateSchemaAddTask}
           onSubmit={(values) => {
-            onAdd({todoId: 1, title: values.nameTask});
+            onAdd({todoId: values.index, title: values.nameTask});
             setVisiblePopup(!visiblePopup);
           }}
         >
@@ -58,8 +58,22 @@ const AddTask = ({onAdd}) => {
                   onBlur={handleBlur}
                   onChange={handleChange}
                 />
+                <input
+                  id="index"
+                  name="index"
+                  className={
+                    errors.nameTask && touched.nameTask
+                      ? "addTask__popup-field__input--invalid"
+                      : "addTask__popup-field__input"
+                  }
+                  values={values.index}
+                  type="text"
+                  placeholder="Введите index"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                />
                 {errors.nameTask && touched.nameTask && (
-                  <span>{errors.nameTask}</span>
+                  <span>{errors.index}</span>
                 )}
               </div>
 

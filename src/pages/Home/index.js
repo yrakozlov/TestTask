@@ -24,18 +24,24 @@ const Home = () => {
     fetchTodos(page, limit);
   }, [page]);
 
+  const onAddTodosWithIndex = (values) => {
+    todos.splice(values.todoId, 0, values);
+    setTodos([...todos]);
+  };
+
   const onAddTodos = (values) => {
     const newTodos = [values, ...todos];
     setTodos(newTodos);
   };
 
-  const onDeleteTask = (id) => {
-    setTodos(todos.filter((todos) => todos.id !== id));
+  const onDeleteTask = (idex) => {
+    todos.splice(idex, 1);
+    setTodos([...todos]);
   };
 
   return (
     <div className="container">
-      <AddTask onAdd={onAddTodos} />
+      <AddTask onAdd={onAddTodosWithIndex} />
       <section className="task__list">
         <table className="table">
           <thead>
@@ -45,8 +51,8 @@ const Home = () => {
             </tr>
           </thead>
           <tbody>
-            {todos.map((todo) => (
-              <tr key={todo.id}>
+            {todos.map((todo, index) => (
+              <tr key={index}>
                 <td>
                   <Circle color="red" />
                 </td>
@@ -59,7 +65,7 @@ const Home = () => {
                     <ButtonMUI
                       size="small"
                       color="secondary"
-                      onClick={() => onDeleteTask(todo.id)}
+                      onClick={() => onDeleteTask(index)}
                     >
                       DELETE
                     </ButtonMUI>
