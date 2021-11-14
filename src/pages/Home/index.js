@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AddTask, Circle } from "../../components";
+import { AddTask, Circle, Modal } from "../../components";
 import { ButtonMUI, Pagination } from "../../shared";
 import "./style.scss";
 
@@ -33,6 +33,23 @@ const Home = () => {
     setTodos(todos.filter((todos) => todos.id !== id));
   };
 
+  const [modalActive, setModalActive] = useState(false)
+
+  const [modalValue, setModalValue] = useState('')
+
+  const handleModalChange = (event) => {
+    setModalValue(event.target.value)
+  }
+
+  const onEdit = (title) => {
+    setModalValue(title)
+    setModalActive(true)
+  }
+
+  const onEditTodos = () => {
+    console.log(todos.id)
+  }
+
   return (
     <div className="container">
       <AddTask onAdd={onAddTodos} />
@@ -45,7 +62,7 @@ const Home = () => {
             </tr>
           </thead>
           <tbody>
-            {todos.map((todo) => (
+            {todos.map((todo, index) => (
               <tr key={todo.id}>
                 <td>
                   <Circle color="red" />
@@ -53,7 +70,7 @@ const Home = () => {
                 <td>{todo.title}</td>
                 <td>
                   <span className="table-inner table-inner--right">
-                    <ButtonMUI size="small" color="primary">
+                    <ButtonMUI size="small" color="primary" onClick={() => onEdit(todo.title)}>
                       Edit
                     </ButtonMUI>
                     <ButtonMUI
@@ -71,6 +88,10 @@ const Home = () => {
         </table>
         <Pagination pageCount={20} onChange={handleChange} />
       </section>
+      <Modal active={modalActive} setActive={setModalActive}>
+        <input type="text" value={modalValue} onChange={handleModalChange}/>
+        <ButtonMUI onClick={onEditTodos}>OK</ButtonMUI>
+      </Modal>
     </div>
   );
 };
